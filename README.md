@@ -5,6 +5,7 @@ OhtuMiniprojekti, Masat
 
 definition of done kirjattu eksplisiittisesti
 
+[![CircleCI](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti.svg?style=svg)](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti)
 linkki CircleCI:hin ja sovellukseen jos kyse web-sovelluksesta
 
 jos kyse työpöytäsovelluksesta: ohjelman asennus- ja käyttöohje

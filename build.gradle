@@ -1,10 +1,8 @@
 // Ohtu Miniprojekti
 
-plugins {
-	id 'com.github.johnrengelman.shadow' version '5.1.0'
-}
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: "jacoco" 
 
 
 mainClassName = 'Main'
@@ -23,7 +21,6 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
-	compile 'junit:junit:4.12'
 
 }
 
@@ -37,4 +34,11 @@ jar {
 
 run {
     standardInput = System.in
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        html.enabled true
+    }
 }

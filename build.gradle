@@ -8,7 +8,6 @@ apply plugin: "jacoco"
 mainClassName = 'Main'
 
 repositories {
-	mavenCentral()
     jcenter()
 }
 
@@ -21,7 +20,7 @@ dependencies {
 
     // Use JUnit test framework
     testCompile 'junit:junit:4.12'
-
+	compile 'junit:junit:4.12'
 }
 
 

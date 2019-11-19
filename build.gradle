@@ -1,5 +1,3 @@
-// Vko3 nhl reader
-
 plugins {
 	id 'com.github.johnrengelman.shadow' version '5.1.0'
 }
@@ -7,7 +5,7 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 
-mainClassName = 'ohtu.Main'
+mainClassName = 'Main'
 
 repositories {
 	mavenCentral()
@@ -25,6 +23,10 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'ohtu.Main'
+        attributes 'Main-Class': 'Main'
     }
+}
+
+run {
+    standardInput = System.in
 }

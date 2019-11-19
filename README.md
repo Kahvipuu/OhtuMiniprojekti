@@ -4,6 +4,7 @@ OhtuMiniprojekti, Masat
 (arvosteluperusteiden mukaiseksi)
 
 definition of done kirjattu eksplisiittisesti
+Codecov testikattavuus [![codecov](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti/branch/master/graph/badge.svg)](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti)
 
 [![CircleCI](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti.svg?style=svg)](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti)
 linkki CircleCI:hin ja sovellukseen jos kyse web-sovelluksesta

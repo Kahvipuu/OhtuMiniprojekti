@@ -16,7 +16,7 @@ public class KonsoliUI implements UI {
         this.lukija = new Scanner(System.in);
     }
 
-    /*
+    
     @Override
     public void kaynnista() {
         while(true) {
@@ -61,12 +61,12 @@ public class KonsoliUI implements UI {
         Kirja uusiKirja = new Kirja(kirjailija, nimi, isbn);
         return uusiKirja;
     }
-    */
-
+    
+/*
     @Override
     public void kaynnista() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+*/
     
 }

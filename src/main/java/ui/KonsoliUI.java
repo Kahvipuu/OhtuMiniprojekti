@@ -63,5 +63,10 @@ public class KonsoliUI implements UI {
     }
     */
 
+    @Override
+    public void kaynnista() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }

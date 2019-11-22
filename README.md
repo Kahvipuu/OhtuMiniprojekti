@@ -24,5 +24,4 @@ linkki CircleCI:hin ja sovellukseen jos kyse web-sovelluksesta
 
 jos kyse työpöytäsovelluksesta: ohjelman asennus- ja käyttöohje
 
-Backlog:
-https://docs.google.com/spreadsheets/d/1a6RwttsXHAi7lOfycPRJg_6gxkxVYwz21VMUe7G2kW8/edit?usp=sharing
+[Backlog:](https://docs.google.com/spreadsheets/d/1a6RwttsXHAi7lOfycPRJg_6gxkxVYwz21VMUe7G2kW8/edit?usp=sharing)

@@ -7,7 +7,7 @@ public class Kirja extends Vinkki {
     private String isbn;
 
     public Kirja(String kirjailija, String nimi, String isbn) {
-        super(Kirja.class);
+        super("kirja");
         this.kirjailija = kirjailija;
         this.nimi = nimi;
         this.isbn = isbn;

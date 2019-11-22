@@ -7,3 +7,7 @@ build
 # NetBeans
 .nb-gradle/
 
+# vim swap files
+*.swp
+
+vinkit.json

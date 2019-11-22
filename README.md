@@ -18,7 +18,7 @@ Toteututun koodin testikattavuus tulee olla vähintään 75% (rivikattavuus)
 
 Suoritettava ohjelma löytyy kansiosta /build/libs/
 
-Ohjelma käynnistetään kansiossa komennolla 
+Ohjelma käynnistetään kansiossa komennolla TARKISTETTAVA ETTÄ TOIMII
 
 ```
 java -jar miniprojekti.jar

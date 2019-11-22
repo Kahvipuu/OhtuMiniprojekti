@@ -20,7 +20,6 @@ yhtenäinen koodityyli
 [![codecov](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti/branch/master/graph/badge.svg)](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti)
 
 [![CircleCI](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti.svg?style=svg)](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti)
-linkki CircleCI:hin ja sovellukseen jos kyse web-sovelluksesta
 
 ## Ohjelman käynnistäminen
 

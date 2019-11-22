@@ -16,13 +16,20 @@ järkevä/selkeä ja perusteltu arkkitehtuuri
 yhtenäinen koodityyli
 
 
-
-Codecov testikattavuus [![codecov](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti/branch/master/graph/badge.svg)](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti)
+## CI ja testikattavuus
+[![codecov](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti/branch/master/graph/badge.svg)](https://codecov.io/gh/Kahvipuu/ohtuminiprojekti)
 
 [![CircleCI](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti.svg?style=svg)](https://circleci.com/gh/Kahvipuu/OhtuMiniprojekti)
-linkki CircleCI:hin ja sovellukseen jos kyse web-sovelluksesta
 
-jos kyse työpöytäsovelluksesta: ohjelman asennus- ja käyttöohje
+## Ohjelman käynnistäminen
 
-Backlog:
-https://docs.google.com/spreadsheets/d/1a6RwttsXHAi7lOfycPRJg_6gxkxVYwz21VMUe7G2kW8/edit?usp=sharing
+Suoritettava ohjelma löytyy kansiosta /build/libs/
+
+Ohjelma käynnistetään kansiossa komennolla 
+
+```
+java -jar miniprojekti.jar
+```
+
+## Projektin ja sprintin backlog ja burndown
+[Linkki Google Sheetiin](https://docs.google.com/spreadsheets/d/1a6RwttsXHAi7lOfycPRJg_6gxkxVYwz21VMUe7G2kW8/edit?usp=sharing)

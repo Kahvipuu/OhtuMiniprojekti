@@ -6,6 +6,7 @@ build
 
 # NetBeans
 .nb-gradle/
+nbproject/
 
 # vim swap files
 *.swp

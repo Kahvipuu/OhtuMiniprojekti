@@ -5,7 +5,7 @@ apply plugin: 'application'
 apply plugin: "jacoco" 
 
 
-mainClassName = 'Main.Main'
+mainClassName = 'main.App'
 
 repositories {
     jcenter()
@@ -19,11 +19,11 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc
 	compile group: 'org.apache.httpcomponents', name: 'fluent-hc', version: '4.5.10'
 
-    // Use JUnit test framework
+        // Use JUnit test framework
 	compile 'junit:junit:4.12'
-    testCompile 'junit:junit:4.12'
-    testCompile 'io.cucumber:cucumber-java:4.7.4'
-    testCompile 'io.cucumber:cucumber-junit:4.7.4'
+        testCompile 'junit:junit:4.12'
+        testCompile 'io.cucumber:cucumber-java:4.7.4'
+        testCompile 'io.cucumber:cucumber-junit:4.7.4'
 	testCompile 'org.mockito:mockito-core:3.1.0' 
 }
 
@@ -31,7 +31,7 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'Main'
+        attributes 'Main-Class': 'main.App'
     }
 }
 
@@ -51,7 +51,7 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: ['Main/**','ui/**'])
+            fileTree(dir: it, exclude: ['main/**'])
         }))
     }
 }

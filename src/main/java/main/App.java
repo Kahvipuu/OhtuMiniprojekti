@@ -29,7 +29,8 @@ public class App {
             if (komento.equals("1")) {
                 Kirja kirja = uusiKirja();
                 dao.lisaa(kirja);
-                io.print("Kirja lisätty vinkkeihin. \n");
+                io.print("Kirja lisätty vinkkeihin.");
+                io.print("\n");
 
             } else if (komento.equals("2")) {
                 List<Vinkki> vinkit = dao.listaaKaikki();

@@ -7,7 +7,6 @@ import domain.*;
 import io.ConsoleIO;
 import io.IO;
 import java.util.List;
-import ui.*;
 
 public class App {
 

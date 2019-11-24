@@ -27,9 +27,9 @@ public class App {
             }
 
             if (komento.equals("1")) {
-                Kirja kirja = uusiKirja();
+                Kirja kirja = newBook();
                 dao.lisaa(kirja);
-                io.print("Kirja lisätty vinkkeihin.");
+                io.print("Kirja lisatty vinkkeihin.");
                 io.print("\n");
 
             } else if (komento.equals("2")) {
@@ -37,6 +37,9 @@ public class App {
                 for (Vinkki v : vinkit) {
                     io.print(v.toString());
                 }
+                io.print("Vinkkeja listattu: " +vinkit.size());
+                io.print("\n");
+
             }
 
         }
@@ -47,7 +50,7 @@ public class App {
                 + "2: Listaa vinkit \n"
                 + "tyhjä sulkee sovelluksen \n";
 
-    public Kirja uusiKirja() {
+    public Kirja newBook() {
         String kirjailija = io.readLine("Syötä kirjailijan nimi: ");
         String nimi = io.readLine("Syötä kirjan nimi: ");
         String isbn = io.readLine("Syötä kirjan ISBN-tunnus: ");

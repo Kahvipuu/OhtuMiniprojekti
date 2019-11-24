@@ -31,19 +31,31 @@ public class Stepdefs {
         inputLines.add("1");
     }
 
+    @Given("book has been created")
+    public void bookTipCreation() {
+        inputLines.add("1");
+        inputLines.add("author");
+        inputLines.add("title");
+        inputLines.add("123");
+    }
+
     @When("author {string} and title {string} and ISBN-number {string} are entered")
-    public void kirjanTiedotAnnetaan(String author, String title, String isbn) {
+    public void bookInfoGiven(String author, String title, String isbn) {
         inputLines.add(author);
         inputLines.add(title);
         inputLines.add(isbn);
+    }
 
-        io = new StubIO(inputLines);
-        app = new App(io, dao);
-        app.run();
+    @When("command listaa is selected")
+    public void commandListaaSelected() {
+        inputLines.add("2");
     }
 
     @Then("system will respond with {string}")
     public void systemWillRespondWith(String expectedOutput) {
+        io = new StubIO(inputLines);
+        app = new App(io, dao);
+        app.run();
         //System.out.println("ohjelma tulosti seuraavat rivit "+io.getPrints());
         assertTrue(io.getPrints().contains(expectedOutput));
     }

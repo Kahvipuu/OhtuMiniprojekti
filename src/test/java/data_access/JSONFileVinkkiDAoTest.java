@@ -26,6 +26,7 @@ public class JSONFileVinkkiDAoTest {
     
     @Before
     public void setUp() {
+        file = "testivinkit.json";
         dao = new JSONFileVinkkiDao(file);
         v = new Vinkki();
     }

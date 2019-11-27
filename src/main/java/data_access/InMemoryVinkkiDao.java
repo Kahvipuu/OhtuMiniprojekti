@@ -3,6 +3,7 @@ package data_access;
 import domain.Vinkki;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class InMemoryVinkkiDao implements VinkkiDao {
 
@@ -20,5 +21,12 @@ public class InMemoryVinkkiDao implements VinkkiDao {
     @Override
     public void lisaa(Vinkki vinkki) {
         vinkit.add(vinkki);
+    }
+
+    @Override
+    public List<Vinkki> listaaTyypin(String tyyppi) {
+        return vinkit.stream()
+                     .filter(vinkki -> vinkki.getTyyppi().equals(tyyppi))
+                     .collect(Collectors.toList());
     }
 }

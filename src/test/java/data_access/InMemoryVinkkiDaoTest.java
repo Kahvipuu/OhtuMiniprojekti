@@ -2,6 +2,7 @@ package data_access;
 
 import domain.*;
 import data_access.*;
+import java.util.List;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -49,5 +50,21 @@ public class InMemoryVinkkiDaoTest {
         
         Object[] testiTulostus = dao.listaaKaikki().toArray();
         assertArrayEquals(lisatytVinkit, testiTulostus);
+    }
+
+    @Test
+    public void voiListataKaikkiTietynTyyppisetVinkit() {
+        Kirja k1 = new Kirja("Kekkonen", "Maailmani", "12345");
+        Kirja k2 = new Kirja("Koivisto", "Tellervo Tellervo", "87498723");
+        Blogi b = new Blogi("Blogaaja", "Toimii", "www.example.com");
+        dao.lisaa(k1);
+        dao.lisaa(b);
+        dao.lisaa(k2);
+
+        List<Vinkki> kirjat = dao.listaaTyypin("kirja");
+        assertTrue(kirjat.contains(k1));
+        assertTrue(kirjat.contains(k2));
+
+        assertFalse(kirjat.contains(b));
     }
 }

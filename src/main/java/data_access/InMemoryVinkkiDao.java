@@ -26,7 +26,7 @@ public class InMemoryVinkkiDao implements VinkkiDao {
     @Override
     public List<Vinkki> listaaTyypin(String tyyppi) {
         return vinkit.stream()
-                     .filter(vinkki -> vinkki.getTyyppi().equals(tyyppi))
+                     .filter(vinkki -> tyyppi.equals(vinkki.getTyyppi()))
                      .collect(Collectors.toList());
     }
 }

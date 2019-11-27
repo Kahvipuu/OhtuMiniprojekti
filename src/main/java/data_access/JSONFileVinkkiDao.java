@@ -10,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import domain.Kirja;
 import domain.Vinkki;
+import domain.Blogi;
 
 public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
     private String file;
@@ -28,6 +29,8 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
                     String tyyppi = gson.fromJson(obj.get("tyyppi"), String.class);
                     if (tyyppi.equals("kirja")) {
                         super.lisaa(gson.fromJson(obj, Kirja.class));
+                    } else if (tyyppi.equals("blogi")) {
+                        super.lisaa(gson.fromJson(obj, Blogi.class));
                     }
                 }
             }

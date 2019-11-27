@@ -1,7 +1,7 @@
 
 package domain;
 
-public  class Vinkki {
+public class Vinkki {
     //private Object tyyppi;
     private String tyyppi;
 

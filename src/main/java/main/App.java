@@ -20,35 +20,48 @@ public class App {
 
     public void run() {
         while (true) {
-            String komento = io.readLine(komennot);
+            String command = io.readLine(mainCommands);
 
-            if (komento.isEmpty()) {
+            if (command.isEmpty()) {
                 break;
             }
 
-            if (komento.equals("1")) {
-                Kirja kirja = newBook();
-                dao.lisaa(kirja);
-                io.print("Kirja lisatty vinkkeihin.");
-                io.print("\n");
-
-            } else if (komento.equals("2")) {
+            if (command.equals("1")) {
+                String newTipcommand = io.readLine(newTipCommands);
+                if (newTipcommand.equals("1")) {
+                    Kirja kirja = newBook();
+                    dao.lisaa(kirja);
+                    io.print("Kirja lisatty vinkkeihin.");
+                    io.print("\n");
+                }
+                if (newTipcommand.equals("2")) {
+                    Blogi blogi = newBlog();
+                    dao.lisaa(blogi);
+                    io.print("Blogi lisatty vinkkeihin.");
+                    io.print("\n");
+                }
+            }
+            if (command.equals("2")) {
                 List<Vinkki> vinkit = dao.listaaKaikki();
                 for (Vinkki v : vinkit) {
                     io.print(v.toString());
                 }
-                io.print("Vinkkeja listattu: " +vinkit.size());
+                io.print("Vinkkeja listattu: " + vinkit.size());
                 io.print("\n");
-
             }
 
         }
     }
 
-    String komennot = "Komennot: \n"
-                + "1: Lisää kirjavinkki \n"
-                + "2: Listaa vinkit \n"
-                + "tyhjä sulkee sovelluksen \n";
+    String mainCommands = "Komennot: \n"
+            + "1: Lisää vinkki \n"
+            + "2: Listaa vinkit \n"
+            + "tyhjä sulkee sovelluksen \n";
+
+    String newTipCommands = "Komennot: \n"
+            + "1: Lisää kirja \n"
+            + "2: Lisää blogi \n"
+            + "tyhjä palaa alkuun \n";
 
     public Kirja newBook() {
         String kirjailija = io.readLine("Syötä kirjailijan nimi: ");
@@ -66,6 +79,14 @@ public class App {
 
         App app = new App(io, dao);
         app.run();
+    }
+
+    private Blogi newBlog() {
+        String kirjoittaja = io.readLine("Syötä kirjoittajan nimi: ");
+        String aihe = io.readLine("Syötä aihe: ");
+        String osoite = io.readLine("Syötä osoite: ");
+        Blogi newBlog = new Blogi(kirjoittaja, aihe, osoite);
+        return newBlog;
     }
 
 }

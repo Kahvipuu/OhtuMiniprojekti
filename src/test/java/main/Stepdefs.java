@@ -26,26 +26,43 @@ public class Stepdefs {
         dao = new InMemoryVinkkiDao();
     }
 
-    @Given("command lisaa is selected")
-    public void commandLisaaSelected() throws Throwable {
+    @Given("command lisaa ja lisaa kirja is selected")
+    public void commandLisaaAndLisaaKirjaSelected() throws Throwable {
+        inputLines.add("1");
         inputLines.add("1");
     }
 
+    @Given("command lisaa ja lisaa blogi is selected")
+    public void commandLisaaAndLisaaBlogiSelected() throws Throwable {
+        inputLines.add("1");
+        inputLines.add("2");
+    }
+    
+    
     @Given("book has been created")
     public void bookTipCreation() {
+        inputLines.add("1");
         inputLines.add("1");
         inputLines.add("author");
         inputLines.add("title");
         inputLines.add("123");
     }
 
-    @When("author {string} and title {string} and ISBN-number {string} are entered")
+    @When("author {string}, title {string} and ISBN-number {string} are entered")
     public void bookInfoGiven(String author, String title, String isbn) {
         inputLines.add(author);
         inputLines.add(title);
         inputLines.add(isbn);
     }
 
+    @When("author {string}, topic {string} and address {string} are entered")
+    public void blogInfoGiven(String author, String topic, String address) {
+        inputLines.add(author);
+        inputLines.add(topic);
+        inputLines.add(address);
+    }
+    
+    
     @When("command listaa is selected")
     public void commandListaaSelected() {
         inputLines.add("2");

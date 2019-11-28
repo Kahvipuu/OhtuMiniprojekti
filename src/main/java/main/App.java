@@ -42,24 +42,40 @@ public class App {
                     io.print("\n");
                 }
             }
-            
+
             // Vinkkien listaaminen
             if (command.equals("2")) {
                 String listCommand = io.readLine(listCommands);
                 if (listCommand.equals("1")) {
                     List<Vinkki> vinkit = dao.listaaTyypin("kirja");
                     printList(vinkit);
-                }
-                else if (listCommand.equals("2")) {
+                } else if (listCommand.equals("2")) {
                     List<Vinkki> vinkit = dao.listaaTyypin("blogi");
                     printList(vinkit);
-                }
-                else if (listCommand.equals("3")){
+                } else if (listCommand.equals("3")) {
                     List<Vinkki> vinkit = dao.listaaKaikki();
                     printList(vinkit);
                 }
             }
-            
+
+            //Vinkkien poistaminen
+            if (command.equals("3")) {
+                List<Vinkki> vinkit = dao.listaaKaikki();
+                printListWithIndex(vinkit);
+                String poistettava = io.readLine("Anna poistettavan vinkin numero: ");
+                try {
+                    int i = Integer.parseInt(poistettava);
+                    if (i >= 0 && i < vinkit.size()) {
+                        dao.poista(i);
+                        io.print("Vinkki poistettu.");
+                        io.print("\n");
+                    } else {
+                        io.print("Epäkelpo syöte.\n");
+                    }
+                } catch (Exception e) {
+                    io.print("Epäkelpo syöte.\n");
+                }
+            }
 
         }
     }
@@ -67,6 +83,7 @@ public class App {
     String mainCommands = "Komennot: \n"
             + "1: Lisää vinkki \n"
             + "2: Listaa vinkit \n"
+            + "3: Poista vinkki \n"
             + "tyhjä sulkee sovelluksen \n";
 
     String newTipCommands = "Komennot: \n"
@@ -87,8 +104,8 @@ public class App {
         Kirja uusiKirja = new Kirja(kirjailija, nimi, isbn);
         return uusiKirja;
     }
-    
-     private Blogi newBlog() {
+
+    private Blogi newBlog() {
         String kirjoittaja = io.readLine("Syötä kirjoittajan nimi: ");
         String aihe = io.readLine("Syötä aihe: ");
         String osoite = io.readLine("Syötä osoite: ");
@@ -101,6 +118,14 @@ public class App {
             io.print(v.toString());
         }
         io.print("Vinkkeja listattu: " + vinkit.size());
+        io.print("\n");
+    }
+
+    public void printListWithIndex(List<Vinkki> vinkit) {
+        for (int i = 0; i < vinkit.size(); i++) {
+            io.print("#" + i);
+            io.print(vinkit.get(i).toString());
+        }
         io.print("\n");
     }
 

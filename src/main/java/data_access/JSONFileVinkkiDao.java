@@ -45,6 +45,12 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
         super.lisaa(uusiVinkki);
         kirjoitaJson();
     }
+    
+    @Override
+    public void poista(int i) {
+        super.poista(i);
+        kirjoitaJson();
+    }
 
     private void kirjoitaJson() {
         String json = gson.toJson(this.listaaKaikki());

@@ -26,6 +26,7 @@ public class App {
                 break;
             }
 
+            // Vinkin lisääminen
             if (command.equals("1")) {
                 String newTipcommand = io.readLine(newTipCommands);
                 if (newTipcommand.equals("1")) {
@@ -41,14 +42,24 @@ public class App {
                     io.print("\n");
                 }
             }
+            
+            // Vinkkien listaaminen
             if (command.equals("2")) {
-                List<Vinkki> vinkit = dao.listaaKaikki();
-                for (Vinkki v : vinkit) {
-                    io.print(v.toString());
+                String listCommand = io.readLine(listCommands);
+                if (listCommand.equals("1")) {
+                    List<Vinkki> vinkit = dao.listaaTyypin("kirja");
+                    printList(vinkit);
                 }
-                io.print("Vinkkeja listattu: " + vinkit.size());
-                io.print("\n");
+                else if (listCommand.equals("2")) {
+                    List<Vinkki> vinkit = dao.listaaTyypin("blogi");
+                    printList(vinkit);
+                }
+                else if (listCommand.equals("3")){
+                    List<Vinkki> vinkit = dao.listaaKaikki();
+                    printList(vinkit);
+                }
             }
+            
 
         }
     }
@@ -63,6 +74,12 @@ public class App {
             + "2: Lisää blogi \n"
             + "tyhjä palaa alkuun \n";
 
+    String listCommands = "Komennot: \n"
+            + "1: Listaa kirjat \n"
+            + "2: Listaa blogit \n"
+            + "3: Listaa kaikki vinkit \n"
+            + "tyhjä palaa alkuun \n";
+
     public Kirja newBook() {
         String kirjailija = io.readLine("Syötä kirjailijan nimi: ");
         String nimi = io.readLine("Syötä kirjan nimi: ");
@@ -70,18 +87,8 @@ public class App {
         Kirja uusiKirja = new Kirja(kirjailija, nimi, isbn);
         return uusiKirja;
     }
-
-    public static void main(String[] args) {
-
-        //VinkkiDao dao = new InMemoryVinkkiDao();
-        VinkkiDao dao = new JSONFileVinkkiDao("vinkit.json");
-        IO io = new ConsoleIO();
-
-        App app = new App(io, dao);
-        app.run();
-    }
-
-    private Blogi newBlog() {
+    
+     private Blogi newBlog() {
         String kirjoittaja = io.readLine("Syötä kirjoittajan nimi: ");
         String aihe = io.readLine("Syötä aihe: ");
         String osoite = io.readLine("Syötä osoite: ");
@@ -89,4 +96,20 @@ public class App {
         return newBlog;
     }
 
+    public void printList(List<Vinkki> vinkit) {
+        for (Vinkki v : vinkit) {
+            io.print(v.toString());
+        }
+        io.print("Vinkkeja listattu: " + vinkit.size());
+        io.print("\n");
+    }
+
+    public static void main(String[] args) {
+
+        VinkkiDao dao = new JSONFileVinkkiDao("vinkit.json");
+        IO io = new ConsoleIO();
+
+        App app = new App(io, dao);
+        app.run();
+    }
 }

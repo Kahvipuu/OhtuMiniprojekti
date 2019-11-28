@@ -43,9 +43,18 @@ public class Stepdefs {
     public void bookTipCreation() {
         inputLines.add("1");
         inputLines.add("1");
-        inputLines.add("author");
-        inputLines.add("title");
-        inputLines.add("123");
+        inputLines.add("Jeffrey K. Liker");
+        inputLines.add("The Toyota Way");
+        inputLines.add("9780071392310");
+    }
+    
+    @Given("blog has been created")
+    public void blogTipCreation() {
+        inputLines.add("1");
+        inputLines.add("2");
+        inputLines.add("Source Making");
+        inputLines.add("Code Smells");
+        inputLines.add("https://sourcemaking.com/refactoring/smells");
     }
 
     @When("author {string}, title {string} and ISBN-number {string} are entered")
@@ -66,6 +75,21 @@ public class Stepdefs {
     @When("command listaa is selected")
     public void commandListaaSelected() {
         inputLines.add("2");
+    }
+    
+    @When("command listaa kirjat is selected")
+    public void commandListaaKirjatSelected() {
+        inputLines.add("1");
+    }
+    
+    @When("command listaa blogit is selected")
+    public void commandListaaBlogitSelected() {
+        inputLines.add("2");
+    }
+    
+    @When("command listaa kaikki is selected")
+    public void commandListaaKaikkiSelected() {
+        inputLines.add("3");
     }
 
     @Then("system will respond with {string}")

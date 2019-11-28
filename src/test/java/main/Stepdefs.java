@@ -11,6 +11,7 @@ import static org.junit.Assert.*;
 import data_access.*;
 import domain.*;
 import io.StubIO;
+import java.io.IOException;
 import main.*;
 
 public class Stepdefs {
@@ -93,7 +94,7 @@ public class Stepdefs {
     }
 
     @Then("system will respond with {string}")
-    public void systemWillRespondWith(String expectedOutput) {
+    public void systemWillRespondWith(String expectedOutput) throws IOException {
         io = new StubIO(inputLines);
         app = new App(io, dao);
         app.run();

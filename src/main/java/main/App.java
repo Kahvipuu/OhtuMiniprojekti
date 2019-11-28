@@ -6,6 +6,7 @@ import data_access.VinkkiDao;
 import domain.*;
 import io.ConsoleIO;
 import io.IO;
+import java.io.IOException;
 import java.util.List;
 
 public class App {
@@ -18,7 +19,7 @@ public class App {
         this.dao = dao;
     }
 
-    public void run() {
+    public void run() throws IOException {
         while (true) {
             String command = io.readLine(mainCommands);
 
@@ -76,7 +77,18 @@ public class App {
                     io.print("Epäkelpo syöte.\n");
                 }
             }
-
+            // Vinkkien avaaminen selaimessa
+            if (command.equals("4")) {
+                List<Vinkki> vinkit = dao.listaaTyypin("blogi");
+                printList(vinkit);
+                String linkki = this.linkinAvaus(vinkit);
+                if (!linkki.equals("virhe")) {
+                    LinkinAvausProsessi prosessi = new LinkinAvausProsessi(linkki);
+                    prosessi.avaaLinkki();
+                } else {
+                    io.print("Epäkelpo syöte.\n");
+                }
+            }
         }
     }
 
@@ -84,6 +96,7 @@ public class App {
             + "1: Lisää vinkki \n"
             + "2: Listaa vinkit \n"
             + "3: Poista vinkki \n"
+            + "4: Avaa linkki selaimessa \n"
             + "tyhjä sulkee sovelluksen \n";
 
     String newTipCommands = "Komennot: \n"
@@ -129,7 +142,46 @@ public class App {
         io.print("\n");
     }
 
-    public static void main(String[] args) {
+    public String linkinAvaus(List<Vinkki> vinkit) {
+        if (vinkit.isEmpty()) {
+            return "virhe";
+        }
+        String avattava = io.readLine("Anna avattavan linkin id (jarjestysnumero) alkaen luvusta 0: ");
+        Vinkki vinkki = new Vinkki();
+        int id = this.tarkistaSyote(avattava);
+        if (id == -1) {
+            return "virhe";
+        }
+        if (id < 0 || id >= vinkit.size()) {
+            return "virhe";
+        }
+        
+        vinkki = vinkit.get(id);
+
+        return haeLinkinTyyppi(vinkki);
+    }
+
+    public int tarkistaSyote(String syote) {
+        int id = 0;
+        try {
+            id = Integer.parseInt(syote);
+        } catch (Exception e) {
+            return -1;
+        }
+        return id;
+    }
+
+    public String haeLinkinTyyppi(Vinkki vinkki) {
+        String linkki = "";
+        if (vinkki.getTyyppi().equals("blogi")) {
+            Blogi b = new Blogi();
+            b = (Blogi) vinkki;
+            linkki = b.getOsoite();
+        }
+        return linkki;
+    }
+
+    public static void main(String[] args) throws IOException {
 
         VinkkiDao dao = new JSONFileVinkkiDao("vinkit.json");
         IO io = new ConsoleIO();

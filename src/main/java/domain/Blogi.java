@@ -13,6 +13,10 @@ public class Blogi extends Vinkki{
         this.osoite = osoite;
     }
 
+    public Blogi() {
+    }
+    
+
     public String getKirjoittaja() {
         return kirjoittaja;
     }

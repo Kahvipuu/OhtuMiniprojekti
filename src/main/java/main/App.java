@@ -85,6 +85,7 @@ public class App {
                 if (!linkki.equals("virhe")) {
                     LinkinAvausProsessi prosessi = new LinkinAvausProsessi(linkki);
                     prosessi.avaaLinkki();
+                    io.print("Linkki avattu selaimeen.");
                 } else {
                     io.print("Epäkelpo syöte.\n");
                 }

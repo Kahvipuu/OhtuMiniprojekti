@@ -108,6 +108,13 @@ public class Stepdefs {
         inputLines.add("0");
     }
     
+    @When("command avaa linkki selaimessa is selected and an id given")
+    public void commandAvaaLinkkiSelaimessaIsSelectedAndAnIdGiven() {
+        inputLines.add("4");
+        inputLines.add("0");
+}
+
+
     
 
 

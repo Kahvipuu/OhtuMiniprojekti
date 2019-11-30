@@ -101,5 +101,10 @@ public class Stepdefs {
         //System.out.println("ohjelma tulosti seuraavat rivit "+io.getPrints());
         assertTrue(io.getPrints().contains(expectedOutput));
     }
+    
+    @Given("command poista is selected")
+    public void commandPoistaIsSelected() {
+        inputLines.add("3");
+    }
 
 }

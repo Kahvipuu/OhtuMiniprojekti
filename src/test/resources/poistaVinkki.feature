@@ -1,9 +1,9 @@
-Feature: A list item can be removed if a proper saved name is given
+Feature: A list item can be removed if a proper id is given
 
     @aktiivinen
-    Scenario: removing is successful with a proper tip name
-        Given command poista is selected
-       	When  name "xx" is entered
-        Then  system will respond with "xx poistettu vinkeistä"
+    Scenario: removing is successful with a proper id
+        Given book has been created 
+        When command poista is selected and an id given
+       	Then  system will respond with "Vinkki poistettu."
 
 

@@ -102,9 +102,13 @@ public class Stepdefs {
         assertTrue(io.getPrints().contains(expectedOutput));
     }
     
-    @Given("command poista is selected")
-    public void commandPoistaIsSelected() {
+    @When("command poista is selected and an id given")
+    public void commandPoistaIsSelectedAndAnIdGiven() {
         inputLines.add("3");
+        inputLines.add("0");
     }
+    
+    
+
 
 }

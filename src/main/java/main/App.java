@@ -80,7 +80,7 @@ public class App {
             // Vinkkien avaaminen selaimessa
             if (command.equals("4")) {
                 List<Vinkki> vinkit = dao.listaaTyypin("blogi");
-                printList(vinkit);
+                printListWithIndex(vinkit);
                 String linkki = this.linkinAvaus(vinkit);
                 if (!linkki.equals("virhe")) {
                     LinkinAvausProsessi prosessi = new LinkinAvausProsessi(linkki);

@@ -42,7 +42,22 @@ public class Blogi extends Vinkki {
 
     @Override
     public String toString() {
-        return "Kirjoittaja: " + kirjoittaja + "\nAihe: " + aihe + "\nOsoite: " + osoite + "\n";
+        String luettu = "";
+        if (super.getLuettu() == true) {
+            luettu = "Blogi luettu\n";
+        }
+
+        return "Kirjoittaja: " + kirjoittaja + "\nAihe: " + aihe + "\nOsoite: " + osoite + "\n" + luettu;
+    }
+
+    @Override
+    public Boolean getLuettu() {
+        return luettu;
+    }
+
+    @Override    
+    public void setLuettu(Boolean luettu) {
+        this.luettu = luettu;
     }
 
     @Override

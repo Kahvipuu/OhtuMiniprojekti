@@ -42,22 +42,26 @@ public class Kirja extends Vinkki {
 
     @Override
     public String toString() {
-        return "Kirjailija: " + this.getKirjailija() + "\n" + "Nimi: " + this.getKirjanNimi() +  "\n" + "ISBN: " + this.getIsbn() + "\n";
+        String luettu = "";
+        if (super.getLuettu() == true) {
+            luettu = "Kirja luettu\n";
+        }
+        return "Kirjailija: " + this.getKirjailija() + "\n" + "Nimi: " + this.getKirjanNimi() + "\n" + "ISBN: " + this.getIsbn() + "\n" + luettu;
     }
-    
+
     public int testi() {
         return 10;
     }
 
     @Override
-    public void setAll(String kirjailija, String kirjanNimi, String isbn){
-        if (!kirjailija.isEmpty()){
+    public void setAll(String kirjailija, String kirjanNimi, String isbn) {
+        if (!kirjailija.isEmpty()) {
             this.kirjailija = kirjailija;
         }
-        if (!kirjanNimi.isEmpty()){
+        if (!kirjanNimi.isEmpty()) {
             this.kirjanNimi = kirjanNimi;
         }
-        if (!isbn.isEmpty()){
+        if (!isbn.isEmpty()) {
             this.isbn = isbn;
         }
     }

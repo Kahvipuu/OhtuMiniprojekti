@@ -109,6 +109,25 @@ public class App {
                     io.print("Epäkelpo syöte.\n");
                 }
             }
+            //Vinkkien merkitseminen luetuksi
+            if (command.equals("6")) {
+                List<Vinkki> vinkit = dao.listaaKaikki();
+                printListWithIndex(vinkit);
+                String luetuksiMerkittava = io.readLine("Anna luetun vinkin numero: ");
+                try {
+                    int i = Integer.parseInt(luetuksiMerkittava);
+                    if (i >= 0 && i < vinkit.size()) {
+                        dao.getVinkki(i).setLuettu(true);
+                        dao.saveJson();
+                        io.print("Vinkki merkitty luetuksi.");
+                        io.print("\n");
+                    } else {
+                        io.print("Vinkin numeroa ei löydetty.\n");
+                    }
+                } catch (Exception e) {
+                    io.print("Epäkelpo syöte.\n");
+                }
+            }
 
         }
     }
@@ -119,6 +138,7 @@ public class App {
             + "3: Poista vinkki \n"
             + "4: Avaa linkki selaimessa \n"
             + "5: Muuta olemassaolevaa vinkkiä \n"
+            + "6: Merkitse vinkki luetuksi \n"
             + "tyhjä sulkee sovelluksen \n";
 
     String newTipCommands = "Komennot: \n"
@@ -229,4 +249,9 @@ public class App {
         }
         dao.saveJson();
     }
+
+    private void merkitseLuetuksi(int i){
+        dao.getVinkki(i).setLuettu(true);
+    }
+
 }

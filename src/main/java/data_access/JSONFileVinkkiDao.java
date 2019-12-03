@@ -52,6 +52,10 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
         kirjoitaJson();
     }
 
+    public void saveJson(){
+        kirjoitaJson();
+    }
+    
     private void kirjoitaJson() {
         String json = gson.toJson(this.listaaKaikki());
         try{
@@ -62,4 +66,10 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
             System.out.println(e);
         }
     }
+
+    @Override
+    public Vinkki getVinkki(int indeksi){
+        return super.getVinkki(indeksi);
+    }
+    
 }

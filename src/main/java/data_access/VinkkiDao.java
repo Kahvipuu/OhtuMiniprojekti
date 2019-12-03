@@ -8,4 +8,6 @@ public interface VinkkiDao {
     void lisaa(Vinkki vinkki);
     List<Vinkki> listaaTyypin(String tyyppi);
     void poista(int i);
+    Vinkki getVinkki(int i);
+    public void saveJson();
 }

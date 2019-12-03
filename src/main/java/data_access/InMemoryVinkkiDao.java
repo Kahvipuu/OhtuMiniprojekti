@@ -35,4 +35,16 @@ public class InMemoryVinkkiDao implements VinkkiDao {
         //Vinkki poistettava = vinkit.stream().filter(v -> v.getId() == id).findFirst().get();
         vinkit.remove(i);
     }
+
+    @Override
+    public Vinkki getVinkki(int indeksi){
+        return this.vinkit.get(indeksi);
+    }
+
+    @Override
+    public void saveJson() {
+
+    }
+
+    
 }

@@ -13,7 +13,7 @@ public class Vinkki {
     }
 
     public String getTyyppi() {
-        return tyyppi;
+        return this.tyyppi;
     }
 
     @Override
@@ -21,10 +21,10 @@ public class Vinkki {
         //return this.getTyyppi().toString();
         return this.getTyyppi();
     }
+
     
-    
-    
-    
-    
-    
+    public void setAll(String tieto1, String tieto2, String tieto3) {
+        
+    }
+
 }

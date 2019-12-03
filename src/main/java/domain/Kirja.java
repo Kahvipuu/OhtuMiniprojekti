@@ -3,13 +3,13 @@ package domain;
 public class Kirja extends Vinkki {
 
     private String kirjailija;
-    private String nimi;
+    private String kirjanNimi;
     private String isbn;
 
     public Kirja(String kirjailija, String nimi, String isbn) {
         super("kirja");
         this.kirjailija = kirjailija;
-        this.nimi = nimi;
+        this.kirjanNimi = nimi;
         this.isbn = isbn;
     }
 
@@ -20,8 +20,8 @@ public class Kirja extends Vinkki {
         this.kirjailija = kirjailija;
     }
 
-    public void setNimi(String nimi) {
-        this.nimi = nimi;
+    public void setKirjanNimi(String kirjanNimi) {
+        this.kirjanNimi = kirjanNimi;
     }
 
     public void setIsbn(String isbn) {
@@ -32,8 +32,8 @@ public class Kirja extends Vinkki {
         return kirjailija;
     }
 
-    public String getNimi() {
-        return nimi;
+    public String getKirjanNimi() {
+        return kirjanNimi;
     }
 
     public String getIsbn() {
@@ -42,10 +42,23 @@ public class Kirja extends Vinkki {
 
     @Override
     public String toString() {
-        return "Kirjailija: " + this.getKirjailija() + "\n" + "Nimi: " + this.getNimi() +  "\n" + "ISBN: " + this.getIsbn() + "\n";
+        return "Kirjailija: " + this.getKirjailija() + "\n" + "Nimi: " + this.getKirjanNimi() +  "\n" + "ISBN: " + this.getIsbn() + "\n";
     }
     
     public int testi() {
         return 10;
+    }
+
+    @Override
+    public void setAll(String kirjailija, String kirjanNimi, String isbn){
+        if (!kirjailija.isEmpty()){
+            this.kirjailija = kirjailija;
+        }
+        if (!kirjanNimi.isEmpty()){
+            this.kirjanNimi = kirjanNimi;
+        }
+        if (!isbn.isEmpty()){
+            this.isbn = isbn;
+        }
     }
 }

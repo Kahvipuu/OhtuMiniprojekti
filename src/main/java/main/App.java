@@ -90,6 +90,26 @@ public class App {
                     io.print("Epäkelpo syöte.\n");
                 }
             }
+
+            //Vinkkien muuttaminen
+            if (command.equals("5")) {
+                List<Vinkki> vinkit = dao.listaaKaikki();
+                printListWithIndex(vinkit);
+                String muutettava = io.readLine("Anna muutettavan vinkin numero: ");
+                try {
+                    int indeksi = Integer.parseInt(muutettava);
+                    if (indeksi >= 0 && indeksi < vinkit.size()) {
+                        vinkinMuuttaminen(indeksi);
+                        io.print("Vinkkia muutettu.");
+                        io.print("\n");
+                    } else {
+                        io.print("Epäkelpo syöte.\n");
+                    }
+                } catch (Exception e) {
+                    io.print("Epäkelpo syöte.\n");
+                }
+            }
+
         }
     }
 
@@ -98,6 +118,7 @@ public class App {
             + "2: Listaa vinkit \n"
             + "3: Poista vinkki \n"
             + "4: Avaa linkki selaimessa \n"
+            + "5: Muuta olemassaolevaa vinkkiä \n"
             + "tyhjä sulkee sovelluksen \n";
 
     String newTipCommands = "Komennot: \n"
@@ -156,7 +177,7 @@ public class App {
         if (id < 0 || id >= vinkit.size()) {
             return "virhe";
         }
-        
+
         vinkki = vinkit.get(id);
 
         return haeLinkinTyyppi(vinkki);
@@ -189,5 +210,23 @@ public class App {
 
         App app = new App(io, dao);
         app.run();
+    }
+
+    private void vinkinMuuttaminen(int i) {
+        String vinkinTyyppi = dao.getVinkki(i).getTyyppi();
+        io.print("Anna uudet tiedot, tyhjä säilyttää vanhan");
+        if (vinkinTyyppi.equals("kirja")) {
+            String kirjailija = io.readLine("Syötä kirjailijan nimi: ");
+            String KirjanNimi = io.readLine("Syötä kirjan nimi: ");
+            String isbn = io.readLine("Syötä kirjan ISBN-tunnus: ");
+            dao.getVinkki(i).setAll(kirjailija, KirjanNimi, isbn);
+        }
+        if (vinkinTyyppi.equals("blogi")) {
+            String kirjoittaja = io.readLine("Syötä kirjoittajan nimi: ");
+            String aihe = io.readLine("Syötä aihe: ");
+            String osoite = io.readLine("Syötä osoite: ");
+            dao.getVinkki(i).setAll(kirjoittaja, aihe, osoite);
+        }
+        dao.saveJson();
     }
 }

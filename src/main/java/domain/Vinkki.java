@@ -4,7 +4,7 @@ public class Vinkki {
 
     //private Object tyyppi;
     private String tyyppi;
-    boolean luettu;
+    private boolean luettu;
 
     public Vinkki(String tyyppi) {
         this.tyyppi = tyyppi;
@@ -18,7 +18,7 @@ public class Vinkki {
         return this.tyyppi;
     }
 
-    public Boolean getLuettu() {
+    public boolean getLuettu() {
         return luettu;
     }
 

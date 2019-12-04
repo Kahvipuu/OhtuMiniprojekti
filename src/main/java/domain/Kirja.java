@@ -43,7 +43,7 @@ public class Kirja extends Vinkki {
     @Override
     public String toString() {
         String luettu = "";
-        if (super.getLuettu() == true) {
+        if (super.getLuettu()) {
             luettu = "Kirja luettu\n";
         }
         return "Kirjailija: " + this.getKirjailija() + "\n" + "Nimi: " + this.getKirjanNimi() + "\n" + "ISBN: " + this.getIsbn() + "\n" + luettu;

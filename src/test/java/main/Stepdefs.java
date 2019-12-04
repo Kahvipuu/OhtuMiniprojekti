@@ -118,6 +118,12 @@ public class Stepdefs {
         inputLines.add("0");
     }
 
+    @When("commands merkitse luetuksi and indeksi 0 are given")
+    public void commadMarkAsReadAndIndexZero() {
+        inputLines.add("6");
+        inputLines.add("0");
+    }
+
     @When("new info {string}, {string} and {string} is given")
     public void newInfoGivenForTip(String info1, String info2, String info3) {
         inputLines.add(info1);

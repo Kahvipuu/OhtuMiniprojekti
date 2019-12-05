@@ -3,6 +3,7 @@ package data_access;
 import domain.*;
 import data_access.*;
 import java.util.List;
+import java.util.ArrayList;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -20,17 +21,28 @@ public class InMemoryVinkkiDaoTest {
 
     VinkkiDao dao;
     Vinkki v;
+    List<Vinkki> vinkit;
     Object[] lisatytVinkit = new Object[2];
 
     @Before
     public void setUp() {
         dao = new InMemoryVinkkiDao();
         v = new Vinkki();
+        vinkit = luoVinkkeja();
     }
     
     
     @After
     public void tearDown() {
+    }
+
+    private List<Vinkki> luoVinkkeja() {
+        List<Vinkki> vinkit = new ArrayList<>();
+        vinkit.add(new Kirja("Kekkonen", "Maailmani", "12345"));
+        vinkit.add(new Kirja("Koivisto", "Tellervo Tellervo", "87498723"));
+        vinkit.add(new Blogi("Blogaaja", "Toimii", "www.example.com"));
+
+        return vinkit;
     }
 
     @Test
@@ -54,14 +66,32 @@ public class InMemoryVinkkiDaoTest {
 
     @Test
     public void voiListataKaikkiTietynTyyppisetVinkit() {
-        Kirja k1 = new Kirja("Kekkonen", "Maailmani", "12345");
-        Kirja k2 = new Kirja("Koivisto", "Tellervo Tellervo", "87498723");
-        Blogi b = new Blogi("Blogaaja", "Toimii", "www.example.com");
+        Kirja k1 = (Kirja)vinkit.get(0);
+        Kirja k2 = (Kirja)vinkit.get(1);
+        Blogi b = (Blogi)vinkit.get(2);
+
         dao.lisaa(k1);
         dao.lisaa(b);
         dao.lisaa(k2);
 
         List<Vinkki> kirjat = dao.listaaTyypin("kirja");
+        assertTrue(kirjat.contains(k1));
+        assertTrue(kirjat.contains(k2));
+
+        assertFalse(kirjat.contains(b));
+    }
+
+    @Test
+    public void hakemallaLoytyyOikeatVinkit() {
+        Kirja k1 = (Kirja)vinkit.get(0);
+        Kirja k2 = (Kirja)vinkit.get(1);
+        Blogi b = (Blogi)vinkit.get(2);
+
+        dao.lisaa(k1);
+        dao.lisaa(b);
+        dao.lisaa(k2);
+
+        List<Vinkki> kirjat = dao.hae("ISBN");
         assertTrue(kirjat.contains(k1));
         assertTrue(kirjat.contains(k2));
 

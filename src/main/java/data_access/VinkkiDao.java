@@ -12,4 +12,5 @@ public interface VinkkiDao {
     public void saveJson();
     List<Vinkki> listaaLuetut();
     List<Vinkki> listaaLukemattomat();
+    List<Vinkki> hae(String hakusana);
 }

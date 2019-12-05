@@ -60,4 +60,10 @@ public class InMemoryVinkkiDao implements VinkkiDao {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<Vinkki> hae(String hakusana) {
+        return vinkit.stream()
+                .filter(vinkki -> vinkki.toString().contains(hakusana))
+                .collect(Collectors.toList());
+    }
 }

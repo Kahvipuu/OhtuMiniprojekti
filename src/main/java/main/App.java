@@ -8,6 +8,8 @@ import io.ConsoleIO;
 import io.IO;
 import java.io.IOException;
 import java.util.List;
+import util.KirjaApi;
+import util.ParserJson;
 
 public class App {
 
@@ -41,6 +43,21 @@ public class App {
                     dao.lisaa(blogi);
                     io.print("Blogi lisatty vinkkeihin.");
                     io.print("\n");
+                }
+                if (newTipcommand.equals("3")) {
+                    Kirja kirja = newBookByIsbn();
+                    if (kirja != null) {
+                        if (kirja.getKirjanNimi().equals("") || kirja.getKirjailija().equals("")) {
+                            io.print("Kirjaa ei löytynyt.");
+                            io.print("\n");
+                        } else {
+                            dao.lisaa(kirja);
+                            System.out.println("\n" + "Kirja ehdotus: " + "\n");
+                            System.out.println(kirja);
+                            io.print("Kirja lisatty vinkkeihin.");
+                            io.print("\n");
+                        }
+                    }
                 }
             }
 
@@ -144,6 +161,7 @@ public class App {
     String newTipCommands = "Komennot: \n"
             + "1: Lisää kirja \n"
             + "2: Lisää blogi \n"
+            + "3: Lisää kirja ISBN:llä \n"
             + "tyhjä palaa alkuun \n";
 
     String listCommands = "Komennot: \n"
@@ -166,6 +184,26 @@ public class App {
         String osoite = io.readLine("Syötä osoite: ");
         Blogi newBlog = new Blogi(kirjoittaja, aihe, osoite);
         return newBlog;
+    }
+
+    private Kirja newBookByIsbn() {
+        String isbn = io.readLine("Syötä kirjan ISBN-tunnus: ");
+        KirjaApi api = new KirjaApi(isbn);
+        String book = "";
+        try {
+            book = api.getBookFromApi();
+        } catch (Exception e) {
+            System.out.println("\n" + "Virhe: Haku epäonnistui" + "\n");
+            return null;
+        }
+        ParserJson parser = new ParserJson(book);
+        parser.initialParse();
+        String kirjailija = parser.getParsedKirjailija();
+        String nimi = parser.getParsedKirja();
+
+        Kirja uusiKirja = new Kirja(kirjailija, nimi, isbn);
+
+        return uusiKirja;
     }
 
     public void printList(List<Vinkki> vinkit) {
@@ -250,7 +288,7 @@ public class App {
         dao.saveJson();
     }
 
-    private void merkitseLuetuksi(int i){
+    private void merkitseLuetuksi(int i) {
         dao.getVinkki(i).setLuettu(true);
     }
 

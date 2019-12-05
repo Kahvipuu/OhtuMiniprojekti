@@ -73,6 +73,12 @@ public class App {
                 } else if (listCommand.equals("3")) {
                     List<Vinkki> vinkit = dao.listaaKaikki();
                     printList(vinkit);
+                } else if (listCommand.equals("4")) {
+                    List<Vinkki> vinkit = dao.listaaLuetut();
+                    printList(vinkit);
+                } else if (listCommand.equals("5")) {
+                    List<Vinkki> vinkit = dao.listaaLukemattomat();
+                    printList(vinkit);
                 }
             }
 
@@ -128,7 +134,7 @@ public class App {
             }
             //Vinkkien merkitseminen luetuksi
             if (command.equals("6")) {
-                List<Vinkki> vinkit = dao.listaaKaikki();
+                List<Vinkki> vinkit = dao.listaaLukemattomat();
                 printListWithIndex(vinkit);
                 String luetuksiMerkittava = io.readLine("Anna luetun vinkin numero: ");
                 try {
@@ -168,6 +174,8 @@ public class App {
             + "1: Listaa kirjat \n"
             + "2: Listaa blogit \n"
             + "3: Listaa kaikki vinkit \n"
+            + "4: Listaa luetut \n"
+            + "5: Listaa lukemattomat \n"
             + "tyhjä palaa alkuun \n";
 
     public Kirja newBook() {
@@ -226,7 +234,7 @@ public class App {
         if (vinkit.isEmpty()) {
             return "virhe";
         }
-        String avattava = io.readLine("Anna avattavan linkin id (jarjestysnumero) alkaen luvusta 0: ");
+        String avattava = io.readLine("Anna avattavan blogin numero: ");
         Vinkki vinkki = new Vinkki();
         int id = this.tarkistaSyote(avattava);
         if (id == -1) {

@@ -10,4 +10,6 @@ public interface VinkkiDao {
     void poista(int i);
     Vinkki getVinkki(int i);
     public void saveJson();
+    List<Vinkki> listaaLuetut();
+    List<Vinkki> listaaLukemattomat();
 }

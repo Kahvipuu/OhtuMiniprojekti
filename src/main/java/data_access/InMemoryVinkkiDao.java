@@ -37,7 +37,7 @@ public class InMemoryVinkkiDao implements VinkkiDao {
     }
 
     @Override
-    public Vinkki getVinkki(int indeksi){
+    public Vinkki getVinkki(int indeksi) {
         return this.vinkit.get(indeksi);
     }
 
@@ -46,5 +46,18 @@ public class InMemoryVinkkiDao implements VinkkiDao {
 
     }
 
-    
+    @Override
+    public List<Vinkki> listaaLuetut() {
+        return vinkit.stream()
+                .filter(vinkki -> vinkki.getLuettu() == true)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Vinkki> listaaLukemattomat() {
+        return vinkit.stream()
+                .filter(vinkki -> vinkki.getLuettu() == false)
+                .collect(Collectors.toList());
+    }
+
 }

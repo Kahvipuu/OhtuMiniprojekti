@@ -52,7 +52,9 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
         kirjoitaJson();
     }
 
-    public void saveJson(){
+    @Override
+    public void paivita(int i){
+        super.paivita(i);
         kirjoitaJson();
     }
     

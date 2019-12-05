@@ -141,7 +141,7 @@ public class App {
                     int i = Integer.parseInt(luetuksiMerkittava);
                     if (i >= 0 && i < vinkit.size()) {
                         vinkit.get(i).setLuettu(true);
-                        dao.saveJson();
+                        dao.paivita(i);
                         io.print("Vinkki merkitty luetuksi.");
                         io.print("\n");
                     } else {
@@ -303,7 +303,7 @@ public class App {
             String osoite = io.readLine("Syötä osoite: ");
             dao.getVinkki(i).setAll(kirjoittaja, aihe, osoite);
         }
-        dao.saveJson();
+        dao.paivita(i);
     }
 
     private void merkitseLuetuksi(int i) {

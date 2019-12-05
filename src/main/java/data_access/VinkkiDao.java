@@ -9,7 +9,7 @@ public interface VinkkiDao {
     List<Vinkki> listaaTyypin(String tyyppi);
     void poista(int i);
     Vinkki getVinkki(int i);
-    public void saveJson();
+    public void paivita(int i);
     List<Vinkki> listaaLuetut();
     List<Vinkki> listaaLukemattomat();
     List<Vinkki> hae(String hakusana);

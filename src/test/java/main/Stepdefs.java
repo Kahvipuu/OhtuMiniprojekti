@@ -141,4 +141,9 @@ public class Stepdefs {
         inputLines.add(info3);
     }
 
+    @When("command hae is selected and keyword {string} is given")
+    public void commandHaeIsSelectedAndKeywordIsGiven(String keyword) {
+        inputLines.add("7");
+        inputLines.add(keyword);
+    }
 }

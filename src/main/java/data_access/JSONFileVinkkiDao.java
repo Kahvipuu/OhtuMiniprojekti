@@ -67,9 +67,11 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
         }
     }
 
+    /*
     @Override
     public Vinkki getVinkki(int indeksi){
         return super.getVinkki(indeksi);
     }
+    */
     
 }

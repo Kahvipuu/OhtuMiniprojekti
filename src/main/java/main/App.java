@@ -140,7 +140,7 @@ public class App {
                 try {
                     int i = Integer.parseInt(luetuksiMerkittava);
                     if (i >= 0 && i < vinkit.size()) {
-                        dao.getVinkki(i).setLuettu(true);
+                        vinkit.get(i).setLuettu(true);
                         dao.saveJson();
                         io.print("Vinkki merkitty luetuksi.");
                         io.print("\n");

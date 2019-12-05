@@ -152,6 +152,15 @@ public class App {
                 }
             }
 
+            //Vinkkien hakeminen
+            if (command.equals("7")) {
+                String hakusana = io.readLine("Anna hakusana: ");
+                // Ei tehdä mitään jos hakusana on pelkkää whitespacea
+                if (!hakusana.trim().equals("")) {
+                    List<Vinkki> vinkit = dao.hae(hakusana);
+                    printList(vinkit);
+                }
+            }
         }
     }
 
@@ -162,6 +171,7 @@ public class App {
             + "4: Avaa linkki selaimessa \n"
             + "5: Muuta olemassaolevaa vinkkiä \n"
             + "6: Merkitse vinkki luetuksi \n"
+            + "7: Hae vinkkejä hakusanalla \n"
             + "tyhjä sulkee sovelluksen \n";
 
     String newTipCommands = "Komennot: \n"

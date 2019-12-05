@@ -42,7 +42,7 @@ public class InMemoryVinkkiDao implements VinkkiDao {
     }
 
     @Override
-    public void paivita(int indeksi) {
+    public void paivita() {
 
     }
 

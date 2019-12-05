@@ -53,8 +53,8 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
     }
 
     @Override
-    public void paivita(int i){
-        super.paivita(i);
+    public void paivita() {
+        super.paivita();
         kirjoitaJson();
     }
     
@@ -68,12 +68,4 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
             System.out.println(e);
         }
     }
-
-    /*
-    @Override
-    public Vinkki getVinkki(int indeksi){
-        return super.getVinkki(indeksi);
-    }
-    */
-    
 }

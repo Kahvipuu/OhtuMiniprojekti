@@ -23,28 +23,28 @@ public class App {
 
     public void run() throws IOException {
         while (true) {
-            String command = io.readLine(mainCommands);
+            String komento = io.readLine(paaKomennot);
 
-            if (command.isEmpty()) {
+            if (komento.isEmpty()) {
                 break;
             }
 
             // Vinkin lisääminen
-            if (command.equals("1")) {
-                String newTipcommand = io.readLine(newTipCommands);
-                if (newTipcommand.equals("1")) {
+            if (komento.equals("1")) {
+                String lisaysKomento = io.readLine(this.lisaysKomennot);
+                if (lisaysKomento.equals("1")) {
                     Kirja kirja = newBook();
                     dao.lisaa(kirja);
                     io.print("Kirja lisatty vinkkeihin.");
                     io.print("\n");
                 }
-                if (newTipcommand.equals("2")) {
+                if (lisaysKomento.equals("2")) {
                     Blogi blogi = newBlog();
                     dao.lisaa(blogi);
                     io.print("Blogi lisatty vinkkeihin.");
                     io.print("\n");
                 }
-                if (newTipcommand.equals("3")) {
+                if (lisaysKomento.equals("3")) {
                     Kirja kirja = newBookByIsbn();
                     if (kirja != null) {
                         if (kirja.getKirjanNimi().equals("") || kirja.getKirjailija().equals("")) {
@@ -62,28 +62,28 @@ public class App {
             }
 
             // Vinkkien listaaminen
-            if (command.equals("2")) {
-                String listCommand = io.readLine(listCommands);
-                if (listCommand.equals("1")) {
+            if (komento.equals("2")) {
+                String listausKomento = io.readLine(listausKomennot);
+                if (listausKomento.equals("1")) {
                     List<Vinkki> vinkit = dao.listaaTyypin("kirja");
                     printList(vinkit);
-                } else if (listCommand.equals("2")) {
+                } else if (listausKomento.equals("2")) {
                     List<Vinkki> vinkit = dao.listaaTyypin("blogi");
                     printList(vinkit);
-                } else if (listCommand.equals("3")) {
+                } else if (listausKomento.equals("3")) {
                     List<Vinkki> vinkit = dao.listaaKaikki();
                     printList(vinkit);
-                } else if (listCommand.equals("4")) {
+                } else if (listausKomento.equals("4")) {
                     List<Vinkki> vinkit = dao.listaaLuetut();
                     printList(vinkit);
-                } else if (listCommand.equals("5")) {
+                } else if (listausKomento.equals("5")) {
                     List<Vinkki> vinkit = dao.listaaLukemattomat();
                     printList(vinkit);
                 }
             }
 
             //Vinkkien poistaminen
-            if (command.equals("3")) {
+            if (komento.equals("3")) {
                 List<Vinkki> vinkit = dao.listaaKaikki();
                 printListWithIndex(vinkit);
                 String poistettava = io.readLine("Anna poistettavan vinkin numero: ");
@@ -101,7 +101,7 @@ public class App {
                 }
             }
             // Vinkkien avaaminen selaimessa
-            if (command.equals("4")) {
+            if (komento.equals("4")) {
                 List<Vinkki> vinkit = dao.listaaTyypin("blogi");
                 printListWithIndex(vinkit);
                 String linkki = this.linkinAvaus(vinkit);
@@ -115,7 +115,7 @@ public class App {
             }
 
             //Vinkkien muuttaminen
-            if (command.equals("5")) {
+            if (komento.equals("5")) {
                 List<Vinkki> vinkit = dao.listaaKaikki();
                 printListWithIndex(vinkit);
                 String muutettava = io.readLine("Anna muutettavan vinkin numero: ");
@@ -133,7 +133,7 @@ public class App {
                 }
             }
             //Vinkkien merkitseminen luetuksi
-            if (command.equals("6")) {
+            if (komento.equals("6")) {
                 List<Vinkki> vinkit = dao.listaaLukemattomat();
                 printListWithIndex(vinkit);
                 String luetuksiMerkittava = io.readLine("Anna luetun vinkin numero: ");
@@ -153,7 +153,7 @@ public class App {
             }
 
             //Vinkkien hakeminen
-            if (command.equals("7")) {
+            if (komento.equals("7")) {
                 String hakusana = io.readLine("Anna hakusana: ");
                 // Ei tehdä mitään jos hakusana on pelkkää whitespacea
                 if (!hakusana.trim().equals("")) {
@@ -164,7 +164,7 @@ public class App {
         }
     }
 
-    String mainCommands = "Komennot: \n"
+    String paaKomennot = "Komennot: \n"
             + "1: Lisää vinkki \n"
             + "2: Listaa vinkit \n"
             + "3: Poista vinkki \n"
@@ -174,13 +174,13 @@ public class App {
             + "7: Hae vinkkejä hakusanalla \n"
             + "tyhjä sulkee sovelluksen \n";
 
-    String newTipCommands = "Komennot: \n"
+    String lisaysKomennot = "Komennot: \n"
             + "1: Lisää kirja \n"
             + "2: Lisää blogi \n"
             + "3: Lisää kirja ISBN:llä \n"
             + "tyhjä palaa alkuun \n";
 
-    String listCommands = "Komennot: \n"
+    String listausKomennot = "Komennot: \n"
             + "1: Listaa kirjat \n"
             + "2: Listaa blogit \n"
             + "3: Listaa kaikki vinkit \n"

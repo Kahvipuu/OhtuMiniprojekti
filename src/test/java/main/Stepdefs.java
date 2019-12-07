@@ -98,11 +98,13 @@ public class Stepdefs {
 
     @When("command listaa luetut is selected")
     public void commandListaaLuetutSelected() {
+        inputLines.add("2");
         inputLines.add("4");
     }
 
     @When("command listaa lukemattomat is selected")
     public void commandListaaLukemattomatSelected() {
+        inputLines.add("2");
         inputLines.add("5");
     }
 

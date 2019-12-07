@@ -148,7 +148,7 @@ public class App {
                     io.print("\n");
                     io.print("----------------------------------------");
                 } else {
-                    io.print("Epäkelpo syöte.");
+                    io.print("Epakelpo syote.");
                     io.print("\n");
                     io.print("----------------------------------------");
                 }

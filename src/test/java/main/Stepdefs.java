@@ -131,6 +131,11 @@ public class Stepdefs {
         inputLines.add("4");
         inputLines.add("0");
     }
+    @When("command avaa linkki selaimessa is selected and an invalid id given")
+    public void commandAvaaLinkkiSelaimessaIsSelectedAndAnInvalidIdGiven() {
+        inputLines.add("4");
+        inputLines.add("99");
+    }
 
     @When("commands muuta vinkkia and indeksi 0 are given")
     public void commandMuutaAndIndexZero() {

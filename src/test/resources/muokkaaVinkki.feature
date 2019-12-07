@@ -19,3 +19,5 @@ Feature: A old list item can be modified if proper info is given
         Given book has been created
         When command merkitse luetuksi and an index are given
         Then system will respond with "Vinkki merkitty luetuksi."
+
+        

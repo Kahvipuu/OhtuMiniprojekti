@@ -12,3 +12,9 @@ Feature: A new list item can be created for a book if proper info is given
     When a valid isbn is given
     Then  system will respond with "Kirja lisatty vinkkeihin."
 
+    @aktiivinen
+    Scenario: creation is unsuccessful with invalid isbn
+    Given command lisaa ja lisaa kirja ISBN:lla is selected
+    When an inexistent isbn is given
+    Then  system will respond with "Kirjaa ei loytynyt."
+

@@ -120,6 +120,11 @@ public class Stepdefs {
         inputLines.add("3");
         inputLines.add("0");
     }
+    @When("command poista is selected and an invalid id given")
+    public void commandPoistaIsSelectedAndAnInvalidIdGiven() {
+        inputLines.add("3");
+        inputLines.add("99");
+    }
 
     @When("command avaa linkki selaimessa is selected and an id given")
     public void commandAvaaLinkkiSelaimessaIsSelectedAndAnIdGiven() {
@@ -149,17 +154,21 @@ public class Stepdefs {
     }
     
     @When("command merkitse luetuksi and an index are given")
-        public void commandsMerkitseLuetuksiAndIndeksiAreGiven() {
-            inputLines.add("6");
-            inputLines.add("0");
+    public void commandsMerkitseLuetuksiAndIndeksiAreGiven() {
+        inputLines.add("6");
+        inputLines.add("0");
     }
     
 
 
     @When("a valid isbn is given")
-        public void aValidIsbnIsGiven() {
-            inputLines.add("978-1-84195-392-2");
-}
-       
+    public void aValidIsbnIsGiven() {
+        inputLines.add("978-1-84195-392-2");
+    }
+    
+    @When("an inexistent isbn is given")
+    public void anInexistentIsbnIsGiven() {
+        inputLines.add("999-999");
+    }   
 
 }

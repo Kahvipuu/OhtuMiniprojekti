@@ -49,7 +49,7 @@ public class App {
                     Kirja kirja = newBookByIsbn();
                     if (kirja != null) {
                         if (kirja.getKirjanNimi().equals("") || kirja.getKirjailija().equals("")) {
-                            io.print("Kirjaa ei löytynyt.");
+                            io.print("Kirjaa ei loytynyt.");
                             io.print("\n");
                             io.print("----------------------------------------");
                         } else {
@@ -126,12 +126,12 @@ public class App {
                         io.print("\n");
                         io.print("----------------------------------------");
                     } else {
-                        io.print("Epäkelpo syöte.");
+                        io.print("Epakelpo syote.");
                         io.print("\n");
                         io.print("----------------------------------------");
                     }
                 } catch (Exception e) {
-                    io.print("Epäkelpo syöte.");
+                    io.print("Epakelpo syote.");
                     io.print("\n");
                     io.print("----------------------------------------");
                 }

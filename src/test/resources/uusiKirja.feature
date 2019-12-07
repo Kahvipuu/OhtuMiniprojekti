@@ -6,3 +6,9 @@ Feature: A new list item can be created for a book if proper info is given
     When  author "Robert Martin", title "Clean Code" and ISBN-number "978-0132350884" are entered
     Then  system will respond with "Kirja lisatty vinkkeihin."
 
+    @aktiivinen
+    Scenario: creation is successful with proper isbn
+    Given command lisaa ja lisaa kirja ISBN:lla is selected
+    When a valid isbn is given
+    Then  system will respond with "Kirja lisatty vinkkeihin."
+

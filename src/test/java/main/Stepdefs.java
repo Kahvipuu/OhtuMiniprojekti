@@ -38,6 +38,11 @@ public class Stepdefs {
         inputLines.add("1");
         inputLines.add("2");
     }
+    @Given("command lisaa ja lisaa kirja ISBN:lla is selected")
+        public void commandLisaaJaLisaaKirjaISBNLlaIsSelected() {
+            inputLines.add("1");
+            inputLines.add("3");
+    }
 
     @Given("book has been created")
     public void bookTipCreation() {
@@ -123,7 +128,7 @@ public class Stepdefs {
     }
 
     @When("commands muuta vinkkia and indeksi 0 are given")
-    public void commadMuutaAndIndexZero() {
+    public void commandMuutaAndIndexZero() {
         inputLines.add("5");
         inputLines.add("0");
     }
@@ -143,10 +148,18 @@ public class Stepdefs {
     
     }
     
-    @When("commands merkitse luetuksi and indeksi {int} are given")
+    @When("command merkitse luetuksi and an index are given")
         public void commandsMerkitseLuetuksiAndIndeksiAreGiven() {
             inputLines.add("6");
             inputLines.add("0");
+    }
+    
+
+
+    @When("a valid isbn is given")
+        public void aValidIsbnIsGiven() {
+            inputLines.add("978-1-84195-392-2");
 }
+       
 
 }

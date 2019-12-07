@@ -1,7 +1,6 @@
 package main;
 
 import data_access.JSONFileVinkkiDao;
-import data_access.InMemoryVinkkiDao;
 import data_access.VinkkiDao;
 import domain.*;
 import io.ConsoleIO;
@@ -37,12 +36,14 @@ public class App {
                     dao.lisaa(kirja);
                     io.print("Kirja lisatty vinkkeihin.");
                     io.print("\n");
+                    io.print("----------------------------------------");
                 }
                 if (lisaysKomento.equals("2")) {
                     Blogi blogi = newBlog();
                     dao.lisaa(blogi);
                     io.print("Blogi lisatty vinkkeihin.");
                     io.print("\n");
+                    io.print("----------------------------------------");
                 }
                 if (lisaysKomento.equals("3")) {
                     Kirja kirja = newBookByIsbn();
@@ -50,12 +51,14 @@ public class App {
                         if (kirja.getKirjanNimi().equals("") || kirja.getKirjailija().equals("")) {
                             io.print("Kirjaa ei löytynyt.");
                             io.print("\n");
+                            io.print("----------------------------------------");
                         } else {
                             dao.lisaa(kirja);
-                            System.out.println("\n" + "Kirja ehdotus: " + "\n");
+                            System.out.println("\n" + "Kirjaehdotus: " + "\n");
                             System.out.println(kirja);
                             io.print("Kirja lisatty vinkkeihin.");
                             io.print("\n");
+                            io.print("----------------------------------------");
                         }
                     }
                 }
@@ -64,21 +67,49 @@ public class App {
             // Vinkkien listaaminen
             if (komento.equals("2")) {
                 String listausKomento = io.readLine(listausKomennot);
-                if (listausKomento.equals("1")) {
-                    List<Vinkki> vinkit = dao.listaaTyypin("kirja");
-                    printList(vinkit);
-                } else if (listausKomento.equals("2")) {
-                    List<Vinkki> vinkit = dao.listaaTyypin("blogi");
-                    printList(vinkit);
-                } else if (listausKomento.equals("3")) {
-                    List<Vinkki> vinkit = dao.listaaKaikki();
-                    printList(vinkit);
-                } else if (listausKomento.equals("4")) {
-                    List<Vinkki> vinkit = dao.listaaLuetut();
-                    printList(vinkit);
-                } else if (listausKomento.equals("5")) {
-                    List<Vinkki> vinkit = dao.listaaLukemattomat();
-                    printList(vinkit);
+                switch (listausKomento) {
+                    case "1":
+                        {
+                            io.print("TALLENNETUT KIRJAT:\n");
+                            List<Vinkki> vinkit = dao.listaaTyypin("kirja");
+                            printList(vinkit);
+                            io.print("----------------------------------------");
+                            break;
+                        }
+                    case "2":
+                        {
+                            io.print("TALLENNETUT BLOGIT:\n");
+                            List<Vinkki> vinkit = dao.listaaTyypin("blogi");
+                            printList(vinkit);
+                            io.print("----------------------------------------");
+                            break;
+                        }
+                    case "3":
+                        {
+                            io.print("KAIKKI VINKIT:\n");
+                            List<Vinkki> vinkit = dao.listaaKaikki();
+                            printList(vinkit);
+                            io.print("----------------------------------------");
+                            break;
+                        }
+                    case "4":
+                        {
+                            io.print("LUETUT VINKIT:\n");
+                            List<Vinkki> vinkit = dao.listaaLuetut();
+                            printList(vinkit);
+                            io.print("----------------------------------------");
+                            break;
+                        }
+                    case "5":
+                        {
+                            io.print("LUKEMATTOMAT VINKIT:\n");
+                            List<Vinkki> vinkit = dao.listaaLukemattomat();
+                            printList(vinkit);
+                            io.print("----------------------------------------");
+                            break;
+                        }
+                    default:
+                        break;
                 }
             }
 
@@ -93,11 +124,16 @@ public class App {
                         dao.poista(i);
                         io.print("Vinkki poistettu.");
                         io.print("\n");
+                        io.print("----------------------------------------");
                     } else {
-                        io.print("Epäkelpo syöte.\n");
+                        io.print("Epäkelpo syöte.");
+                        io.print("\n");
+                        io.print("----------------------------------------");
                     }
                 } catch (Exception e) {
-                    io.print("Epäkelpo syöte.\n");
+                    io.print("Epäkelpo syöte.");
+                    io.print("\n");
+                    io.print("----------------------------------------");
                 }
             }
             // Vinkkien avaaminen selaimessa
@@ -109,8 +145,12 @@ public class App {
                     LinkinAvausProsessi prosessi = new LinkinAvausProsessi(linkki);
                     prosessi.avaaLinkki();
                     io.print("Linkki avattu selaimeen.");
+                    io.print("\n");
+                    io.print("----------------------------------------");
                 } else {
-                    io.print("Epäkelpo syöte.\n");
+                    io.print("Epäkelpo syöte.");
+                    io.print("\n");
+                    io.print("----------------------------------------");
                 }
             }
 
@@ -125,11 +165,16 @@ public class App {
                         vinkinMuuttaminen(indeksi);
                         io.print("Vinkkia muutettu.");
                         io.print("\n");
+                        io.print("----------------------------------------");
                     } else {
-                        io.print("Epäkelpo syöte.\n");
+                        io.print("Epäkelpo syöte.");
+                        io.print("\n");
+                        io.print("----------------------------------------");
                     }
                 } catch (Exception e) {
-                    io.print("Epäkelpo syöte.\n");
+                    io.print("Epäkelpo syöte.");
+                    io.print("\n");
+                    io.print("----------------------------------------");
                 }
             }
             //Vinkkien merkitseminen luetuksi
@@ -144,11 +189,15 @@ public class App {
                         dao.paivita();
                         io.print("Vinkki merkitty luetuksi.");
                         io.print("\n");
+                        io.print("----------------------------------------");
                     } else {
-                        io.print("Vinkin numeroa ei löydetty.\n");
+                        io.print("Vinkin numeroa ei löydetty.");
+                        io.print("\n");
+                        io.print("----------------------------------------");
                     }
                 } catch (Exception e) {
                     io.print("Epäkelpo syöte.\n");
+                    io.print("----------------------------------------");
                 }
             }
 
@@ -157,8 +206,10 @@ public class App {
                 String hakusana = io.readLine("Anna hakusana: ");
                 // Ei tehdä mitään jos hakusana on pelkkää whitespacea
                 if (!hakusana.trim().equals("")) {
+                    io.print("VINKIT HAKUSANALLA " + hakusana + ":\n");
                     List<Vinkki> vinkit = dao.hae(hakusana);
                     printList(vinkit);
+                    io.print("----------------------------------------");
                 }
             }
         }

@@ -106,7 +106,7 @@ public class Stepdefs {
         io = new StubIO(inputLines);
         app = new App(io, dao);
         app.run();
-        //System.out.println("ohjelma tulosti seuraavat rivit "+io.getPrints());
+//        System.out.println("ohjelma tulosti seuraavat rivit "+io.getPrints());
         assertTrue(io.getPrints().contains(expectedOutput));
     }
 
@@ -128,11 +128,6 @@ public class Stepdefs {
         inputLines.add("0");
     }
 
-    @When("commands merkitse luetuksi and indeksi 0 are given")
-    public void commadMarkAsReadAndIndexZero() {
-        inputLines.add("6");
-        inputLines.add("0");
-    }
 
     @When("new info {string}, {string} and {string} is given")
     public void newInfoGivenForTip(String info1, String info2, String info3) {
@@ -145,5 +140,13 @@ public class Stepdefs {
     public void commandHaeIsSelectedAndKeywordIsGiven(String keyword) {
         inputLines.add("7");
         inputLines.add(keyword);
+    
     }
+    
+    @When("commands merkitse luetuksi and indeksi {int} are given")
+        public void commandsMerkitseLuetuksiAndIndeksiAreGiven() {
+            inputLines.add("6");
+            inputLines.add("0");
+}
+
 }

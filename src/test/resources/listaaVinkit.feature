@@ -26,16 +26,13 @@ Feature: Tips can be listed if a proper command is given
         @aktiivinen
         Scenario: list of unread tips is printed with a proper command
         Given book has been created
-        And blog has been created
-        When command merkitse luetuksi and indeksi 0 are given
-        And command listaa lukemattomat is selected
-        Then system will respond with "Vinkkeja listattu: 1"
+        And command merkitse luetuksi and an index are given
+        When command listaa lukemattomat is selected
+        Then system will respond with "Vinkkeja listattu: 0"
 
         @aktiivinen
         Scenario: list of tips marked as read is printed with a proper command
         Given book has been created
-        And blog has been created
-        When command merkitse luetuksi and indeksi 0 are given
-        And command merkitse luetuksi and indeksi 0 are given
-        And command listaa luetut is selected
-        Then system will respond with "Vinkkeja listattu: 2"
+        And command merkitse luetuksi and an index are given
+        When command listaa luetut is selected
+        Then system will respond with "Vinkkeja listattu: 1"

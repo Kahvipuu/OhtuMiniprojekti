@@ -31,9 +31,9 @@ public class InMemoryVinkkiDao implements VinkkiDao {
     }
 
     @Override
-    public void poista(int i) {
+    public void poista(int indeksi) {
         //Vinkki poistettava = vinkit.stream().filter(v -> v.getId() == id).findFirst().get();
-        vinkit.remove(i);
+        vinkit.remove(indeksi);
     }
 
     @Override

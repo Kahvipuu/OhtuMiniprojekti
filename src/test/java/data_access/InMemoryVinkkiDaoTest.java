@@ -74,7 +74,7 @@ public class InMemoryVinkkiDaoTest {
         dao.lisaa(b);
         dao.lisaa(k2);
 
-        List<Vinkki> kirjat = dao.listaaTyypin("kirja");
+        List<Vinkki> kirjat = dao.listaaTyypinMukaan("kirja");
         assertTrue(kirjat.contains(k1));
         assertTrue(kirjat.contains(k2));
 

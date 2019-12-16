@@ -67,7 +67,7 @@ public class App {
                     case "1":
                         {
                             io.print("TALLENNETUT KIRJAT:\n");
-                            List<Vinkki> vinkit = dao.listaaTyypin("kirja");
+                            List<Vinkki> vinkit = dao.listaaTyypinMukaan("kirja");
                             printList(vinkit);
                             io.print("----------------------------------------");
                             break;
@@ -75,7 +75,7 @@ public class App {
                     case "2":
                         {
                             io.print("TALLENNETUT BLOGIT:\n");
-                            List<Vinkki> vinkit = dao.listaaTyypin("blogi");
+                            List<Vinkki> vinkit = dao.listaaTyypinMukaan("blogi");
                             printList(vinkit);
                             io.print("----------------------------------------");
                             break;
@@ -131,7 +131,7 @@ public class App {
             }
             // Vinkkien avaaminen selaimessa
             if (komento.equals("4")) {
-                List<Vinkki> vinkit = dao.listaaTyypin("blogi");
+                List<Vinkki> vinkit = dao.listaaTyypinMukaan("blogi");
                 printListWithIndex(vinkit);
                 String linkki = this.linkinAvaus(vinkit);
                 if (!linkki.equals("virhe")) {

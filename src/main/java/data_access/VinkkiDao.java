@@ -6,7 +6,7 @@ import domain.Vinkki;
 public interface VinkkiDao {
     List<Vinkki> listaaKaikki();
     void lisaa(Vinkki vinkki);
-    List<Vinkki> listaaTyypin(String tyyppi);
+    List<Vinkki> listaaTyypinMukaan(String tyyppi);
     void poista(int i);
     Vinkki getVinkki(int i);
     public void paivita();

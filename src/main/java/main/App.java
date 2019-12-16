@@ -35,30 +35,26 @@ public class App {
                     Kirja kirja = newBook();
                     dao.lisaa(kirja);
                     io.print("Kirja lisatty vinkkeihin.");
-                    io.print("\n");
-                    io.print("----------------------------------------");
+                    rowAndLine();
                 }
                 if (lisaysKomento.equals("2")) {
                     Blogi blogi = newBlog();
                     dao.lisaa(blogi);
                     io.print("Blogi lisatty vinkkeihin.");
-                    io.print("\n");
-                    io.print("----------------------------------------");
+                    rowAndLine();
                 }
                 if (lisaysKomento.equals("3")) {
                     Kirja kirja = newBookByIsbn();
                     if (kirja != null) {
                         if (kirja.getKirjanNimi().equals("") || kirja.getKirjailija().equals("")) {
                             io.print("Kirjaa ei loytynyt.");
-                            io.print("\n");
-                            io.print("----------------------------------------");
+                            rowAndLine();
                         } else {
                             dao.lisaa(kirja);
                             System.out.println("\n" + "Kirjaehdotus: " + "\n");
                             System.out.println(kirja);
                             io.print("Kirja lisatty vinkkeihin.");
-                            io.print("\n");
-                            io.print("----------------------------------------");
+                            rowAndLine();
                         }
                     }
                 }
@@ -123,17 +119,14 @@ public class App {
                     if (i >= 0 && i < vinkit.size()) {
                         dao.poista(i);
                         io.print("Vinkki poistettu.");
-                        io.print("\n");
-                        io.print("----------------------------------------");
+                        rowAndLine();
                     } else {
                         io.print("Epakelpo syote.");
-                        io.print("\n");
-                        io.print("----------------------------------------");
+                        rowAndLine();
                     }
                 } catch (Exception e) {
                     io.print("Epakelpo syote.");
-                    io.print("\n");
-                    io.print("----------------------------------------");
+                    rowAndLine();
                 }
             }
             // Vinkkien avaaminen selaimessa
@@ -145,12 +138,10 @@ public class App {
                     LinkinAvausProsessi prosessi = new LinkinAvausProsessi(linkki);
                     prosessi.avaaLinkki();
                     io.print("Linkki avattu selaimeen.");
-                    io.print("\n");
-                    io.print("----------------------------------------");
+                    rowAndLine();
                 } else {
                     io.print("Epakelpo syote.");
-                    io.print("\n");
-                    io.print("----------------------------------------");
+                    rowAndLine();
                 }
             }
 
@@ -164,17 +155,14 @@ public class App {
                     if (indeksi >= 0 && indeksi < vinkit.size()) {
                         vinkinMuuttaminen(indeksi);
                         io.print("Vinkkia muutettu.");
-                        io.print("\n");
-                        io.print("----------------------------------------");
+                        rowAndLine();
                     } else {
                         io.print("Epäkelpo syöte.");
-                        io.print("\n");
-                        io.print("----------------------------------------");
+                        rowAndLine();
                     }
                 } catch (Exception e) {
                     io.print("Epäkelpo syöte.");
-                    io.print("\n");
-                    io.print("----------------------------------------");
+                    rowAndLine();
                 }
             }
             //Vinkkien merkitseminen luetuksi
@@ -281,6 +269,11 @@ public class App {
         }
         io.print("Vinkkeja listattu: " + vinkit.size());
         io.print("\n");
+    }
+    
+    private void rowAndLine() {
+        io.print("\n");
+        io.print("----------------------------------------");
     }
 
     public void printListWithIndex(List<Vinkki> vinkit) {

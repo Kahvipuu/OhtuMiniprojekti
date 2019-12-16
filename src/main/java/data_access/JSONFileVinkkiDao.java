@@ -47,8 +47,8 @@ public class JSONFileVinkkiDao extends InMemoryVinkkiDao {
     }
     
     @Override
-    public void poista(int i) {
-        super.poista(i);
+    public void poista(int indeksi) {
+        super.poista(indeksi);
         kirjoitaJson();
     }
 
